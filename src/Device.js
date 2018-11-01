@@ -18,7 +18,7 @@ export class DeviceManager
 {
 	getChannelNames(): Array<string> {return []};
 
-	dataSubject(): Observable<DataPacket>{return new Observable<DataPacket>();}
+	data(): Observable<DataPacket>{return new Observable<DataPacket>();}
 
 	connect(identifier: string): void {};
   startListening(): void {};
