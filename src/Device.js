@@ -2,7 +2,8 @@
 
 import {Observable} from "rxjs";
 
-export type ConnectStatus = "Disconnected" | "Connecting" | "Connected" | "Disconnecting";
+export type ConnectStatus = "Disconnected" |"Connecting" | "Connected" |
+  "Disconnecting" | "Unknown";
 
 export type ConnectionPacket = {
 	id: string,
