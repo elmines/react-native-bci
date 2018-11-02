@@ -18,8 +18,12 @@ export interface DeviceManager
 {
 	getChannelNames(): Array<string>;
 	data(): Observable<DataPacket>;
+
+	//An Observable that provides a list of devices every time the number of devices available changes
+	devices(): Observable<Array<string>>;
+
 	connect(identifier: string): void;
-	search(): void;
 	startListening(): void;
 	stopListening(): void;
+
 }
