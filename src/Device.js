@@ -14,13 +14,11 @@ export type DataPacket = {
 	}
 }
 
-export class DeviceManager
+export interface DeviceManager
 {
-	getChannelNames(): Array<string> {return []};
-
-	data(): Observable<DataPacket>{return new Observable<DataPacket>();}
-
-	connect(identifier: string): void {};
-  startListening(): void {};
-	stopListening(): void {}
+	getChannelNames(): Array<string>;
+	data(): Observable<DataPacket>;
+	connect(identifier: string): void;
+	startListening(): void;
+	stopListening(): void;
 }
