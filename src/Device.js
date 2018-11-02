@@ -19,6 +19,7 @@ export interface DeviceManager
 	getChannelNames(): Array<string>;
 	data(): Observable<DataPacket>;
 	connect(identifier: string): void;
+	search(): void;
 	startListening(): void;
 	stopListening(): void;
 }
