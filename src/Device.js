@@ -1,8 +1,14 @@
 //@flow
 
-import {Observable} from "rxjs";
+import type {Observable} from "rxjs";
 
-export type ConnectStatus = "Disconnected" | "Connecting" | "Connected" | "Disconnecting";
+export type ConnectStatus = "Disconnected" |"Connecting" | "Connected" |
+  "Disconnecting" | "Unknown";
+
+export type ConnectionPacket = {
+	id: string,
+	status: ConnectStatus
+}
 
 //Matches the @neurosity/pipes
 export type DataPacket = {
@@ -14,13 +20,19 @@ export type DataPacket = {
 	}
 }
 
-export class DeviceManager
+export interface DeviceManager
 {
-	getChannelNames(): Array<string> {return []};
+	getChannelNames(): Array<string>;
+	data(): Observable<DataPacket>;
 
-	dataSubject(): Observable<DataPacket>{return new Observable<DataPacket>();}
+	//An Observable that provides a list of devices every time the number of devices available changes
+	devices(): Observable<Array<string>>;
 
-	connect(identifier: string): void {};
-  startListening(): void {};
-	stopListening(): void {}
+	//An observable that sends a packet everytime the connection status of a device changes
+	connections(): Observable<ConnectionPacket>;
+
+	connect(identifier: string): void;
+	startListening(): void;
+	stopListening(): void;
+
 }
